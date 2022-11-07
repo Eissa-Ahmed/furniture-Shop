@@ -1,4 +1,7 @@
+import 'package:e_commerce_2022/E_Commerce/Constant/StringManage.dart';
+import 'package:e_commerce_2022/E_Commerce/Constant/theme.dart';
 import 'package:e_commerce_2022/E_Commerce/Presentation/LoginScreen/loginScreen.dart';
+import 'package:e_commerce_2022/E_Commerce/Presentation/OnBoardingScreen/onBoardingScreen.dart';
 import 'package:e_commerce_2022/E_Commerce/Presentation/SplashScreen/splashScreen.dart';
 import 'package:e_commerce_2022/E_Commerce/Services/myBindings.dart';
 import 'package:flutter/material.dart';
@@ -16,14 +19,22 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialBinding: MyBindings(),
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: themeMode,
       getPages: [
         GetPage(
-          name: "/",
+          name: RoutesString.splashScreen,
           page: () => const SplashScreen(),
           transition: Transition.rightToLeftWithFade,
         ),
         GetPage(
-          name: "/login",
+          name: RoutesString.onBoradingScreen,
+          page: () => OnBoardingScreen(),
+          transition: Transition.rightToLeftWithFade,
+        ),
+        GetPage(
+          name: RoutesString.loginScreen,
           page: () => LoginSceen(),
           transition: Transition.rightToLeftWithFade,
         ),

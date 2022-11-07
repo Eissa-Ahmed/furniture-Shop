@@ -1,3 +1,4 @@
+import 'package:e_commerce_2022/E_Commerce/Constant/StringManage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +11,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   goToLogin() {
-    Future.delayed(const Duration(seconds: 3), () => Get.offAllNamed("/login"));
+    Future.delayed(const Duration(seconds: 3),
+        () => Get.offAllNamed(RoutesString.onBoradingScreen));
   }
 
   @override
@@ -26,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/Spalsh.png"),
+              image: AssetImage(AssetsString.splash),
               fit: BoxFit.fill,
             ),
           ),
