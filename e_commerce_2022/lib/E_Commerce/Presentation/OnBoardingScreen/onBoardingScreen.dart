@@ -1,6 +1,7 @@
 import 'package:e_commerce_2022/E_Commerce/Constant/StringManage.dart';
 import 'package:e_commerce_2022/E_Commerce/Constant/colorsManager.dart';
 import 'package:e_commerce_2022/E_Commerce/Controller/OnBoardingController/onBoardingController.dart';
+import 'package:e_commerce_2022/E_Commerce/Helpers/cachHelper.dart';
 import 'package:e_commerce_2022/E_Commerce/Presentation/OnBoardingScreen/itemOnBoarding.dart';
 import 'package:e_commerce_2022/E_Commerce/Presentation/OnBoardingScreen/rowButtomOnBoarding.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +59,7 @@ class OnBoardingScreen extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         Get.offAllNamed(RoutesString.loginScreen);
+        CachHelper.saveData("onBoarding", true);
       },
       child: const Text(
         "Get Started",

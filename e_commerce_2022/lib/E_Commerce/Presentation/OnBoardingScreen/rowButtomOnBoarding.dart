@@ -1,6 +1,7 @@
 import 'package:e_commerce_2022/E_Commerce/Constant/StringManage.dart';
 import 'package:e_commerce_2022/E_Commerce/Constant/colorsManager.dart';
 import 'package:e_commerce_2022/E_Commerce/Controller/OnBoardingController/onBoardingController.dart';
+import 'package:e_commerce_2022/E_Commerce/Helpers/cachHelper.dart';
 import 'package:e_commerce_2022/E_Commerce/Helpers/iconBroken.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,6 +22,7 @@ class RowButtomOnBoarding extends StatelessWidget {
         TextButton(
           onPressed: () {
             Get.offAllNamed(RoutesString.loginScreen);
+            CachHelper.saveData("onBoarding", true);
           },
           child: const Text("SKIP"),
         ),
