@@ -1,3 +1,4 @@
+import 'package:e_commerce_2022/E_Commerce/Constant/StringManage.dart';
 import 'package:e_commerce_2022/E_Commerce/Constant/colorsManager.dart';
 import 'package:e_commerce_2022/E_Commerce/Controller/AuthController/authController.dart';
 import 'package:e_commerce_2022/E_Commerce/Helpers/iconBroken.dart';
@@ -5,7 +6,7 @@ import 'package:e_commerce_2022/E_Commerce/Presentation/WidgetShare/customTextFi
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../WidgetShare/signWithGoogle.dart';
+import '../../WidgetShare/signWithGoogle.dart';
 
 class LoginSceen extends StatelessWidget {
   LoginSceen({super.key});
@@ -13,13 +14,7 @@ class LoginSceen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          // leading: IconButton(
-          //     onPressed: () {
-          //       Get.back();
-          //     },
-          //     icon: const Icon(Icons.arrow_back)),
-          ),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Form(
           key: controller.formKeyLogin,
@@ -154,7 +149,9 @@ class LoginSceen extends StatelessWidget {
                       ],
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(RoutesString.signUpScreen);
+                      },
                       child: Text(
                         "Sign Up For Free",
                         style: Theme.of(context)

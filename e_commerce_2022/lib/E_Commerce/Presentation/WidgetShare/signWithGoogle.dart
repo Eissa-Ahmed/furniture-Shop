@@ -1,5 +1,5 @@
+import 'package:e_commerce_2022/E_Commerce/Constant/StringManage.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 ElevatedButton signWithGoogle(BuildContext context) {
   return ElevatedButton(
@@ -10,9 +10,9 @@ ElevatedButton signWithGoogle(BuildContext context) {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(
-          FontAwesomeIcons.google,
-          color: Theme.of(context).primaryColor,
+        Image.asset(
+          AssetsString.googleIcon,
+          width: 30,
         ),
         const SizedBox(
           width: 8,

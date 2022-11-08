@@ -10,6 +10,7 @@ ThemeData lightTheme = ThemeData(
   primarySwatch: ColorsManager.primarySwatch,
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(
+    iconTheme: IconThemeData(color: Colors.black),
     backgroundColor: Colors.white,
     elevation: 0,
     systemOverlayStyle: SystemUiOverlayStyle(
@@ -82,6 +83,7 @@ ThemeData darkTheme = ThemeData(
   primarySwatch: ColorsManager.primarySwatch,
   scaffoldBackgroundColor: const Color(0xff0A111F),
   appBarTheme: const AppBarTheme(
+    iconTheme: IconThemeData(color: Colors.black),
     backgroundColor: Color(0xff0A111F),
     elevation: 0,
     systemOverlayStyle: SystemUiOverlayStyle(
