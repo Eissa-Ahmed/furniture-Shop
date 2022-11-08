@@ -10,6 +10,11 @@ class LoginSceen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(controller.title),
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Icons.arrow_back)),
       ),
     );
   }

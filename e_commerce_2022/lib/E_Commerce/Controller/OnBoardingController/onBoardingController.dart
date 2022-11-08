@@ -1,9 +1,11 @@
 import 'package:e_commerce_2022/E_Commerce/Constant/StringManage.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class OnBoardingController extends GetxController {
   // Variables
   int currentIndexOnBoardingPage = 0;
+  PageController pageController = PageController();
 
   //Lists
   List<String> onBoardingStrings = [
@@ -21,6 +23,15 @@ class OnBoardingController extends GetxController {
   //Functions
   void changeCurrentIndiactor(int i) {
     currentIndexOnBoardingPage = i;
+    update();
+  }
+
+  inCrementCurrentIndex() {
+    currentIndexOnBoardingPage += 1;
+    pageController.nextPage(
+      curve: Curves.linear,
+      duration: const Duration(milliseconds: 400),
+    );
     update();
   }
 }

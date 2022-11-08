@@ -1,4 +1,8 @@
+import 'package:e_commerce_2022/E_Commerce/Constant/StringManage.dart';
+import 'package:e_commerce_2022/E_Commerce/Constant/colorsManager.dart';
 import 'package:e_commerce_2022/E_Commerce/Controller/OnBoardingController/onBoardingController.dart';
+import 'package:e_commerce_2022/E_Commerce/Presentation/OnBoardingScreen/itemOnBoarding.dart';
+import 'package:e_commerce_2022/E_Commerce/Presentation/OnBoardingScreen/rowButtomOnBoarding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -14,53 +18,60 @@ class OnBoardingScreen extends StatelessWidget {
           children: [
             Expanded(
               child: PageView.builder(
+                controller: controller.pageController,
                 onPageChanged: (i) {
                   controller.changeCurrentIndiactor(i);
                 },
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, i) {
-                  return Column(
-                    children: [
-                      const Spacer(),
-                      Container(
-                        margin: const EdgeInsets.all(20),
-                        width: double.infinity,
-                        height: 330,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage(controller.onBoardingImages[i]),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        controller.onBoardingStrings[i],
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+                  return ItemOnBoarding(
+                    controller: controller,
+                    i: i,
                   );
                 },
                 itemCount: controller.onBoardingImages.length,
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
             GetBuilder(
               init: OnBoardingController(),
-              builder: (c) => AnimatedSmoothIndicator(
-                activeIndex: c.currentIndexOnBoardingPage,
-                count: c.onBoardingImages.length,
-                effect: const WormEffect(),
+              builder: (c) => customIndicator(c),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            GetBuilder<OnBoardingController>(
+              builder: (c) => Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+                child: c.currentIndexOnBoardingPage == 2
+                    ? buttomOnBoarding()
+                    : RowButtomOnBoarding(controller: controller),
               ),
             )
           ],
         ),
+      ),
+    );
+  }
+
+  ElevatedButton buttomOnBoarding() {
+    return ElevatedButton(
+      onPressed: () {
+        Get.offAllNamed(RoutesString.loginScreen);
+      },
+      child: const Text(
+        "Get Started",
+        style: TextStyle(color: Colors.white),
+      ),
+    );
+  }
+
+  AnimatedSmoothIndicator customIndicator(OnBoardingController c) {
+    return AnimatedSmoothIndicator(
+      activeIndex: c.currentIndexOnBoardingPage,
+      count: c.onBoardingImages.length,
+      effect: const WormEffect(
+        activeDotColor: ColorsManager.primaryColor,
       ),
     );
   }

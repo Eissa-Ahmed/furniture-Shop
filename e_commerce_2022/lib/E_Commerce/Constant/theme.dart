@@ -7,6 +7,15 @@ ThemeData lightTheme = ThemeData(
   fontFamily: "MyFont",
   primarySwatch: ColorsManager.primarySwatch,
   scaffoldBackgroundColor: Colors.white,
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      animationDuration: const Duration(milliseconds: 700),
+      minimumSize: const Size(double.infinity, 55),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+    ),
+  ),
   textTheme: const TextTheme(
     bodyLarge: TextStyle(
       height: 1.3,
@@ -16,10 +25,22 @@ ThemeData lightTheme = ThemeData(
     ),
   ),
 );
+
+///////////////////////
+//////////////////////
 ThemeData darkTheme = ThemeData(
   fontFamily: "MyFont",
   primarySwatch: ColorsManager.primarySwatch,
   scaffoldBackgroundColor: const Color(0xff0A111F),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      animationDuration: const Duration(milliseconds: 700),
+      minimumSize: const Size(double.infinity, 55),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+    ),
+  ),
   textTheme: const TextTheme(
     bodyLarge: TextStyle(
       height: 1.3,
