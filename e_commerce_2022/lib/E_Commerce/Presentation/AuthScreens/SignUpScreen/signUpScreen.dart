@@ -48,13 +48,39 @@ class SignUpScreen extends StatelessWidget {
                   height: 5,
                 ),
                 customTextFormField(
+                  keyboardType: TextInputType.text,
                   context: context,
                   hint: "Enter Your Name !",
                   prefixIcon: const Icon(IconBroken.User),
                   validator: (val) {
-                    return null;
+                    if (val!.isEmpty) {
+                      return "Name Is  Required !";
+                    } else {
+                      return null;
+                    }
                   },
                   textEditingController: controller.controllerSignUpName,
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                label(context, "Phone :"),
+                const SizedBox(
+                  height: 5,
+                ),
+                customTextFormField(
+                  keyboardType: TextInputType.phone,
+                  context: context,
+                  hint: "Enter Your Phone !",
+                  prefixIcon: const Icon(IconBroken.Call),
+                  validator: (val) {
+                    if (val!.isEmpty) {
+                      return "Phone Is  Required !";
+                    } else {
+                      return null;
+                    }
+                  },
+                  textEditingController: controller.controllerSignUpphone,
                 ),
                 const SizedBox(
                   height: 25,
@@ -64,11 +90,16 @@ class SignUpScreen extends StatelessWidget {
                   height: 5,
                 ),
                 customTextFormField(
+                  keyboardType: TextInputType.emailAddress,
                   context: context,
                   hint: "Enter Your Email !",
                   prefixIcon: const Icon(FontAwesomeIcons.envelope),
                   validator: (val) {
-                    return null;
+                    if (val!.isEmpty) {
+                      return "Email Is  Required !";
+                    } else {
+                      return null;
+                    }
                   },
                   textEditingController: controller.controllerSignUpEmail,
                 ),
@@ -81,6 +112,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 GetBuilder<AuthController>(
                   builder: (c) => customTextFormField(
+                    keyboardType: TextInputType.visiblePassword,
                     obscureText: c.isShowPass,
                     context: context,
                     hint: "Enter Your Password !",
@@ -92,7 +124,11 @@ class SignUpScreen extends StatelessWidget {
                       icon: c.iconPass,
                     ),
                     validator: (val) {
-                      return null;
+                      if (val!.isEmpty) {
+                        return "Password Is  Required !";
+                      } else {
+                        return null;
+                      }
                     },
                     textEditingController: controller.controllerSignUpPass,
                   ),
@@ -100,9 +136,19 @@ class SignUpScreen extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text("Sign Up"),
+                GetBuilder<AuthController>(
+                  builder: (c) => ElevatedButton(
+                    onPressed: () async {
+                      if (controller.formKeySignUp.currentState!.validate()) {
+                        await controller.signup(context);
+                      }
+                    },
+                    child: c.isLoading
+                        ? const CircularProgressIndicator(
+                            color: Colors.white,
+                          )
+                        : const Text("Sign Up"),
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -111,42 +157,43 @@ class SignUpScreen extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          "Already Have An Acount?",
-                          style: Theme.of(context)
-                              .textTheme
-                              .displaySmall!
-                              .copyWith(
-                                  fontSize: 14, fontWeight: FontWeight.w500),
-                        )
-                      ],
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      child: Text(
-                        "Sign In",
-                        style: Theme.of(context)
-                            .textTheme
-                            .displaySmall!
-                            .copyWith(
-                                color: Theme.of(context).primaryColor,
-                                fontSize: 14),
-                      ),
-                    ),
-                  ],
-                ),
+                rowButtomSignUp(context),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Row rowButtomSignUp(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(
+          children: [
+            Text(
+              "Already Have An Acount?",
+              style: Theme.of(context)
+                  .textTheme
+                  .displaySmall!
+                  .copyWith(fontSize: 14, fontWeight: FontWeight.w500),
+            )
+          ],
+        ),
+        TextButton(
+          onPressed: () {
+            Get.back();
+          },
+          child: Text(
+            "Sign In",
+            style: Theme.of(context)
+                .textTheme
+                .displaySmall!
+                .copyWith(color: Theme.of(context).primaryColor, fontSize: 14),
+          ),
+        ),
+      ],
     );
   }
 

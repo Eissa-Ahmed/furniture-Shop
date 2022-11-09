@@ -8,8 +8,10 @@ TextFormField customTextFormField({
   required String? Function(String?)? validator,
   required TextEditingController textEditingController,
   bool obscureText = false,
+  required TextInputType keyboardType,
 }) {
   return TextFormField(
+    keyboardType: keyboardType,
     obscureText: obscureText,
     validator: validator,
     style: Theme.of(context)

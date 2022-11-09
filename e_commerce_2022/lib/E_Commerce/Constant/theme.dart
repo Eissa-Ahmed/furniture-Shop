@@ -21,6 +21,7 @@ ThemeData lightTheme = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
+      padding: const EdgeInsets.symmetric(vertical: 10),
       backgroundColor: ColorsManager.primaryColor,
       foregroundColor: Colors.white,
       animationDuration: const Duration(milliseconds: 700),
@@ -94,6 +95,7 @@ ThemeData darkTheme = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
+      padding: const EdgeInsets.symmetric(vertical: 10),
       backgroundColor: ColorsManager.primaryColor,
       foregroundColor: Colors.white,
       animationDuration: const Duration(milliseconds: 700),

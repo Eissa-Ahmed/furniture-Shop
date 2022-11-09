@@ -1,9 +1,14 @@
 import 'package:e_commerce_2022/E_Commerce/Constant/StringManage.dart';
+import 'package:e_commerce_2022/E_Commerce/Presentation/WidgetShare/customSnackBar.dart';
 import 'package:flutter/material.dart';
 
 ElevatedButton signWithGoogle(BuildContext context) {
   return ElevatedButton(
-    onPressed: () {},
+    onPressed: () {
+      customSnackBar2("title", "This service Not Working Currently !", context);
+      customSnackBar(
+          "Sign With Google State", "This service Not Working Currently !");
+    },
     style: ElevatedButton.styleFrom(
         backgroundColor: const Color.fromARGB(255, 248, 248, 248),
         elevation: 0),

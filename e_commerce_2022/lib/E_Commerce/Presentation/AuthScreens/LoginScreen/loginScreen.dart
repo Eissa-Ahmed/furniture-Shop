@@ -42,6 +42,7 @@ class LoginSceen extends StatelessWidget {
                   height: 5,
                 ),
                 customTextFormField(
+                  keyboardType: TextInputType.emailAddress,
                   context: context,
                   hint: "Enter Your Email !",
                   prefixIcon: const Icon(IconBroken.User),
@@ -59,6 +60,7 @@ class LoginSceen extends StatelessWidget {
                 ),
                 GetBuilder<AuthController>(
                   builder: (c) => customTextFormField(
+                    keyboardType: TextInputType.visiblePassword,
                     obscureText: c.isShowPass,
                     context: context,
                     hint: "Enter Your Password !",
@@ -122,9 +124,17 @@ class LoginSceen extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text("Sign In"),
+                GetBuilder<AuthController>(
+                  builder: (c) => ElevatedButton(
+                    onPressed: () async {
+                      await controller.signIn(context);
+                    },
+                    child: c.isLoading
+                        ? const CircularProgressIndicator(
+                            color: Colors.white,
+                          )
+                        : const Text("Sign In"),
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -154,12 +164,11 @@ class LoginSceen extends StatelessWidget {
                       },
                       child: Text(
                         "Sign Up For Free",
-                        style: Theme.of(context)
-                            .textTheme
-                            .displaySmall!
-                            .copyWith(
-                                color: Theme.of(context).primaryColor,
-                                fontSize: 14),
+                        style:
+                            Theme.of(context).textTheme.displaySmall!.copyWith(
+                                  color: Theme.of(context).primaryColor,
+                                  fontSize: 14,
+                                ),
                       ),
                     ),
                   ],
